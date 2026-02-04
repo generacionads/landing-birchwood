@@ -1,0 +1,3 @@
+module.exports=[99154,a=>{a.v({className:"lato_f4206833-module__MIq8eG__className",variable:"lato_f4206833-module__MIq8eG__variable"})},33290,a=>{"use strict";var b=a.i(7997),c=a.i(99154);let d={className:c.default.className,style:{fontFamily:"'Lato', 'Lato Fallback'",fontStyle:"normal"}};function e({children:a}){return(0,b.jsx)("html",{lang:"en-GB",children:(0,b.jsx)("body",{className:`${d.variable} font-sans bg-slate-50 text-slate-800 antialiased selection:bg-brand-200 selection:text-brand-900`,children:a})})}null!=c.default.variable&&(d.variable=c.default.variable),a.s(["default",()=>e,"metadata",0,{title:"Birchwood Dental - Dental Implants",description:"Birchwood Dental Redesign"}],33290)}];
+
+//# sourceMappingURL=%5Broot-of-the-server%5D__389782db._.js.map
