@@ -48,37 +48,37 @@ export const PROCESS_STEPS: ProcessStep[] = [
     number: "01",
     title: "Implant Assessment",
     description: "We assess your oral health with state-of-the-art 3D scanners and design a bespoke treatment plan.",
-    image: "/images/process/step1.jpg"
+    image: "/images/process/implant-assessment.png"
   },
   {
     number: "02",
     title: "Bone Augmentation",
     description: "If necessary, we build up the bone structure to ensure a solid foundation for your new implants.",
-    image: "/images/process/step2.jpg"
+    image: "/images/process/bone-augmentation.png"
   },
   {
     number: "03",
     title: "Implant Placement",
     description: "Painless surgical intervention under local anaesthetic to place the titanium implant into the bone.",
-    image: "/images/process/step3.jpg"
+    image: "/images/process/implant-placement.png"
   },
   {
     number: "04",
     title: "Implant Stabilisation Period",
     description: "A healing period (osseointegration) where the implant fuses with the jawbone to create a permanent root.",
-    image: "/images/process/step4.jpg"
+    image: "/images/process/healing-period.png"
   },
   {
     number: "05",
     title: "Placing New Teeth",
     description: "We fit your custom-made crown, bridge, or fixed denture onto the stabilised implants.",
-    image: "/images/process/step5.jpg"
+    image: "/images/process/final-restoration.png"
   },
   {
     number: "06",
     title: "Complete Smile",
     description: "Your treatment is complete. You leave the clinic ready to smile, eat, and speak with confidence.",
-    image: "/images/process/step6.jpg"
+    image: "/images/process/complete-smile.png"
   }
 ];
 
@@ -122,8 +122,8 @@ export const CASE_STUDIES: CaseStudy[] = [
     id: 1,
     title: "Full Mouth Rehabilitation",
     description: "Here are the results after this patient had received their dental implant treatment. The appearance of their teeth has been improved considerably.  This patient can eat comfortably, smile, and speak confidently. With the proper maintenance, this smile can last a lifetime.",
-    beforeImage: "/images/case-studies/before.jpg", // Serious senior man
-    afterImage: "/images/case-studies/after.jpg" // Happy senior man smile
+    beforeImage: "/images/case-studies/before-implants.png",
+    afterImage: "/images/case-studies/after-implants.png"
   }
 ];
 
