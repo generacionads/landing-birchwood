@@ -1,172 +1,57 @@
-"use client";
+import React from 'react';
+import { SERVICES } from '../constants';
+import { ArrowRight } from 'lucide-react';
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+const Services: React.FC = () => {
+  return (
+    <section id="services" className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-brand-600 font-semibold tracking-wide uppercase text-sm mb-3">Our Treatments</h2>
+          <h3 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-4">Bespoke solutions for every patient</h3>
+          <p className="text-slate-600 text-lg">
+            We use state-of-the-art technology and the highest quality biocompatible materials.
+          </p>
+        </div>
 
-// Icons (using the single extracted asset for now)
-const iconSingleTooth = "/assets/icon_single_tooth.png";
-
-const servicesData = [
-    {
-        id: 1,
-        title: "Single tooth implant",
-        description: "A single-tooth implant replaces a missing root without affecting the adjacent teeth. It is the most natural-looking and feeling replacement.",
-        icon: iconSingleTooth,
-    },
-    {
-        id: 2,
-        title: "Multiple teeth implants",
-        description: "Implants can support a bridge to replace multiple missing teeth, providing a secure and stable restoration that looks and feels natural.",
-        icon: iconSingleTooth,
-    },
-    {
-        id: 3,
-        title: "Full arch implants",
-        description: "Restore your entire upper or lower jaw with a full arch of fixed teeth. This life-changing treatment provides immediate function and aesthetics.",
-        icon: iconSingleTooth,
-    },
-    {
-        id: 4,
-        title: "Zygomatic implants",
-        description: "Specialized implants for patients with significant bone loss in the upper jaw, avoiding the need for complex bone grafting procedures.",
-        icon: iconSingleTooth,
-    },
-    {
-        id: 5,
-        title: "Bone grafting",
-        description: "Procedures to rebuild bone structure in preparation for dental implants, ensuring a solid foundation for your new teeth.",
-        icon: iconSingleTooth,
-    },
-    {
-        id: 6,
-        title: "Sedation dentistry",
-        description: "Relaxing sedation options to ensure your comfort and peace of mind during any dental implant procedure.",
-        icon: iconSingleTooth,
-    },
-];
-
-export default function Services() {
-    const [hoveredId, setHoveredId] = useState<number | null>(null);
-
-    // We need to handle responsive styles. 
-    // For simplicity and to avoid hydration issues, we'll rely on CSS/Tailwind for mobile reset
-    // and Framer Motion for desktop interactions.
-
-    return (
-        <section className="w-full bg-white py-20 px-4 md:px-0" id="services">
-            <div className="max-w-[1512px] mx-auto flex flex-col items-center">
-                {/* Section Heading */}
-                <div className="mb-16 text-center">
-                    <h2 className="text-[40px] md:text-[56px] leading-tight text-[#c59a51] font-sans" style={{ fontFamily: "Lato, sans-serif" }}>
-                        Dental Implants
-                    </h2>
-                </div>
-
-                {/* Services Grid */}
-                <div className="flex flex-wrap justify-center gap-[30px] md:gap-x-[50px] md:gap-y-[50px] w-full px-6 md:px-16">
-                    {servicesData.map((service) => (
-                        <ServiceCard
-                            key={service.id}
-                            service={service}
-                            isHovered={hoveredId === service.id}
-                            onHover={() => setHoveredId(service.id)}
-                            onLeave={() => setHoveredId(null)}
-                        />
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-}
-
-function ServiceCard({
-    service,
-    isHovered,
-    onHover,
-    onLeave,
-}: {
-    service: typeof servicesData[0];
-    isHovered: boolean;
-    onHover: () => void;
-    onLeave: () => void;
-}) {
-    const [isMobile, setIsMobile] = useState(false);
-
-    React.useEffect(() => {
-        const checkMobile = () => setIsMobile(window.innerWidth < 768);
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
-        return () => window.removeEventListener('resize', checkMobile);
-    }, []);
-
-    return (
-        <motion.div
-            layout
-            onMouseEnter={!isMobile ? onHover : undefined}
-            onMouseLeave={!isMobile ? onLeave : undefined}
-            className={`bg-[#eeeae3] overflow-hidden cursor-pointer relative rounded-none flex-shrink-0 flex items-center
-        ${!isMobile ? "flex-row" : "flex-col w-full p-[25px] gap-[17px]"}
-      `}
-            // Desktop Animation
-            animate={!isMobile ? {
-                width: isHovered ? 600 : 348, // Increase max width to accommodate side-by-side
-                height: 198, // Fixed height avoids vertical jumps
-                padding: isHovered ? "25px 40px" : "25px 87px",
-                gap: isHovered ? 40 : 17,
-                alignItems: "center",
-            } : {
-                // Mobile State (Static override)
-                width: "100%",
-                height: "auto",
-                padding: "25px",
-                gap: 17,
-                alignItems: "center"
-            }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        >
-            {/* Icon + Title Container */}
-            <motion.div
-                layout="position"
-                className={`flex flex-col items-center gap-[17px] shrink-0 ${!isMobile ? "w-[175px]" : "w-full"
-                    }`}
+        <div className="grid md:grid-cols-3 gap-8">
+          {SERVICES.map((service, index) => (
+            <div
+              key={index}
+              className="group p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:border-brand-200 hover:shadow-xl hover:shadow-brand-900/5 transition-all duration-300 relative overflow-hidden flex flex-col"
             >
-                {/* Icon */}
-                <div className="relative w-[88px] h-[88px] rounded-[15px] overflow-hidden flex-shrink-0">
-                    <img
-                        src={service.icon}
-                        alt={service.title}
-                        className="w-full h-full object-cover"
-                    />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-brand-100/50 rounded-full -mr-16 -mt-16 group-hover:bg-brand-100 transition-colors"></div>
+
+              <div className="relative z-10 flex-grow">
+                <div className="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-brand-600 mb-6 group-hover:scale-110 transition-transform duration-300">
+                  {typeof service.icon === 'string' ? (
+                    <img src={service.icon} alt={service.title} className="w-8 h-8 object-contain" />
+                  ) : (
+                    <service.icon size={28} strokeWidth={1.5} />
+                  )}
                 </div>
 
-                {/* Title */}
-                <div className="w-full flex justify-center text-center">
-                    <h3
-                        className="font-normal text-[20px] leading-[25px] text-[#080808]"
-                        style={{ fontFamily: "Lato, sans-serif" }}
-                    >
-                        {service.title}
-                    </h3>
-                </div>
-            </motion.div>
+                <h4 className="text-xl font-bold text-slate-900 mb-3">{service.title}</h4>
+                <p className="text-slate-600 leading-relaxed mb-6">
+                  {service.description}
+                </p>
+              </div>
 
-            {/* Description Content */}
-            <div className={`text-[14px] leading-[25px] text-black font-sans ${isMobile ? 'w-full block' : 'flex-1'}`}>
-                <AnimatePresence mode="wait">
-                    {(isMobile || isHovered) && (
-                        <motion.div
-                            initial={!isMobile ? { opacity: 0, width: 0 } : { opacity: 1, height: "auto" }}
-                            animate={!isMobile ? { opacity: 1, width: "auto" } : { opacity: 1, height: "auto" }}
-                            exit={!isMobile ? { opacity: 0, width: 0 } : undefined}
-                            className={!isMobile ? "h-full flex items-center overflow-hidden" : "w-full"}
-                        >
-                            <div className={`text-base ${!isMobile ? "text-left min-w-[200px]" : "pt-2 text-center"}`}>
-                                {service.description}
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
+              <div className="relative z-10 pt-4 mt-auto">
+                <a
+                  href="#contact"
+                  className="inline-flex items-center justify-center w-full px-4 py-3 bg-white border border-brand-200 text-brand-700 font-semibold rounded-xl hover:bg-brand-600 hover:text-white hover:border-brand-600 transition-all duration-300 group/btn shadow-sm"
+                >
+                  Book Your Free Consultation
+                  <ArrowRight size={18} className="ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                </a>
+              </div>
             </div>
-        </motion.div>
-    );
-}
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Services;
