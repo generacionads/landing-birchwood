@@ -1,19 +1,16 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useActionState } from 'react';
 import { Phone, Mail, MapPin, Send } from 'lucide-react';
+import { sendEmail } from '@/app/actions';
+
+const initialState = {
+  success: false,
+  message: '',
+};
 
 const Contact: React.FC = () => {
-  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormStatus('submitting');
-    // Simulate network request
-    setTimeout(() => {
-      setFormStatus('success');
-    }, 1500);
-  };
+  const [state, formAction, isPending] = useActionState(sendEmail, initialState);
 
   return (
     <section id="contact" className="py-24 bg-slate-50 text-slate-900">
@@ -63,7 +60,7 @@ const Contact: React.FC = () => {
 
           {/* Form Side */}
           <div className="bg-white rounded-2xl p-8 text-slate-900 shadow-2xl">
-            {formStatus === 'success' ? (
+            {state.success ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-12">
                 <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4">
                   <Send size={32} />
@@ -71,33 +68,33 @@ const Contact: React.FC = () => {
                 <h3 className="text-2xl font-bold text-slate-900 mb-2">Message Sent!</h3>
                 <p className="text-slate-600">We will be in touch within 24 hours.</p>
                 <button
-                  onClick={() => setFormStatus('idle')}
+                  onClick={() => window.location.reload()}
                   className="mt-6 text-brand-600 font-semibold hover:underline"
                 >
                   Send another message
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form action={formAction} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
-                  <input required type="text" id="name" className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all" placeholder="John Doe" />
+                  <input required name="name" type="text" id="name" className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all" placeholder="John Doe" />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-1">Phone</label>
-                    <input required type="tel" id="phone" className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all" placeholder="07123 456789" />
+                    <input required name="phone" type="tel" id="phone" className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all" placeholder="07123 456789" />
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1">Email</label>
-                    <input required type="email" id="email" className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all" placeholder="john@email.com" />
+                    <input required name="email" type="email" id="email" className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all" placeholder="john@email.com" />
                   </div>
                 </div>
 
                 <div>
                   <label htmlFor="treatment" className="block text-sm font-medium text-slate-700 mb-1">Treatment of Interest</label>
-                  <select id="treatment" className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all">
+                  <select name="treatment" id="treatment" className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all">
                     <option>Single Tooth Implant</option>
                     <option>Multi Tooth Implants</option>
                     <option>Both Jaws</option>
@@ -109,16 +106,20 @@ const Contact: React.FC = () => {
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-1">Message (Optional)</label>
-                  <textarea id="message" rows={4} className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all" placeholder="Any specific questions?"></textarea>
+                  <textarea name="message" id="message" rows={4} className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all" placeholder="Any specific questions?"></textarea>
                 </div>
 
                 <button
                   type="submit"
-                  disabled={formStatus === 'submitting'}
+                  disabled={isPending}
                   className="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-brand-500/30 transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  {formStatus === 'submitting' ? 'Sending...' : 'Book Your Free Consultation'}
+                  {isPending ? 'Sending...' : 'Book Your Free Consultation'}
                 </button>
+
+                {state.message && !state.success && (
+                  <p className="text-sm text-red-500 text-center mt-2">{state.message}</p>
+                )}
 
                 <p className="text-xs text-slate-400 text-center mt-4">
                   Your data is protected. We do not share information with third parties.
