@@ -1,16 +1,52 @@
 "use client";
 
-import React, { useActionState } from 'react';
+import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Send } from 'lucide-react';
-import { sendEmail } from '@/app/actions';
-
-const initialState = {
-  success: false,
-  message: '',
-};
 
 const Contact: React.FC = () => {
-  const [state, formAction, isPending] = useActionState(sendEmail, initialState);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setMessage('');
+
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/reception@birchwooddental.co.uk", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          ...data,
+          _cc: "david@digitalico.com",
+          _bcc: "javierrevueltag@gmail.com",
+          _subject: `New Consultation Request from ${data.name}`,
+          _template: "table"
+        })
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setSuccess(true);
+      } else {
+        setMessage(result.message || 'Something went wrong. Please try again.');
+        setSuccess(false);
+      }
+    } catch (error) {
+      setMessage('Network error. Please try again later.');
+      setSuccess(false);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section id="contact" className="py-24 bg-slate-50 text-slate-900">
@@ -60,7 +96,7 @@ const Contact: React.FC = () => {
 
           {/* Form Side */}
           <div className="bg-white rounded-2xl p-8 text-slate-900 shadow-2xl">
-            {state.success ? (
+            {success ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-12">
                 <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4">
                   <Send size={32} />
@@ -75,7 +111,13 @@ const Contact: React.FC = () => {
                 </button>
               </div>
             ) : (
-              <form action={formAction} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Honeypot to prevent spam */}
+                <input type="text" name="_honey" style={{ display: 'none' }} />
+
+                {/* Disable Captcha */}
+                <input type="hidden" name="_captcha" value="false" />
+
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
                   <input required name="name" type="text" id="name" className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all" placeholder="John Doe" />
@@ -111,14 +153,14 @@ const Contact: React.FC = () => {
 
                 <button
                   type="submit"
-                  disabled={isPending}
+                  disabled={isSubmitting}
                   className="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-brand-500/30 transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  {isPending ? 'Sending...' : 'Book Your Free Consultation'}
+                  {isSubmitting ? 'Sending...' : 'Book Your Free Consultation'}
                 </button>
 
-                {state.message && !state.success && (
-                  <p className="text-sm text-red-500 text-center mt-2">{state.message}</p>
+                {message && !success && (
+                  <p className="text-sm text-red-500 text-center mt-2">{message}</p>
                 )}
 
                 <p className="text-xs text-slate-400 text-center mt-4">
