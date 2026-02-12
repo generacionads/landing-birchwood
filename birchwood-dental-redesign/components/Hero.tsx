@@ -35,7 +35,7 @@ const Hero: React.FC = () => {
               href="#contact"
               className="inline-flex justify-center items-center px-8 py-4 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-full transition-all shadow-lg hover:shadow-brand-500/40 text-lg"
             >
-              Book Your Free Consultation
+              Book Your Free Enquiry
               <ArrowRight className="ml-2 w-5 h-5" />
             </a>
             <a

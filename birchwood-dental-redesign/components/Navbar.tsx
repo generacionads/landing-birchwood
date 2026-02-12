@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
               className="bg-brand-600 hover:bg-brand-700 text-white px-5 py-2.5 rounded-full text-sm font-medium transition-all shadow-lg hover:shadow-brand-500/30 flex items-center gap-2"
             >
               <Phone size={16} />
-              Book Your Free Consultation
+              Book Your Free Enquiry
             </a>
           </div>
 
@@ -60,7 +60,7 @@ const Navbar: React.FC = () => {
               onClick={() => setIsOpen(false)}
               className="block w-full text-center bg-brand-600 text-white px-5 py-3 rounded-lg font-bold shadow-md active:scale-95 transition-transform"
             >
-              Book Your Free Consultation
+              Book Your Free Enquiry
             </a>
           </div>
         </div>

@@ -16,12 +16,12 @@ const Process: React.FC = () => {
             {PROCESS_STEPS.map((step, index) => (
               <div key={index} className="relative z-10 group">
                 <div className="bg-white rounded-2xl border border-slate-100 shadow-sm group-hover:shadow-xl group-hover:-translate-y-2 transition-all duration-300 h-full flex flex-col overflow-hidden">
-                  
+
                   {/* Image Section */}
                   <div className="h-48 w-full overflow-hidden relative">
-                    <img 
-                      src={step.image} 
-                      alt={step.title} 
+                    <img
+                      src={step.image}
+                      alt={step.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -32,7 +32,7 @@ const Process: React.FC = () => {
                     <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-brand-600 text-white flex items-center justify-center font-bold text-lg shadow-lg ring-4 ring-white z-10">
                       {step.number}
                     </div>
-                    
+
                     <h4 className="text-lg font-bold text-slate-900 mb-3">{step.title}</h4>
                     <p className="text-slate-500 text-sm leading-relaxed">
                       {step.description}
@@ -48,11 +48,11 @@ const Process: React.FC = () => {
           <p className="text-slate-500 mb-8 max-w-2xl mx-auto">
             We understand that every patient is unique. Times may vary according to your specific healing and treatment needs.
           </p>
-          <a 
-            href="#contact" 
+          <a
+            href="#contact"
             className="inline-flex justify-center items-center px-8 py-3 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-full transition-all shadow-lg hover:shadow-brand-500/30 text-lg group"
           >
-            Book Your Free Consultation
+            Book Your Free Enquiry
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </a>
         </div>

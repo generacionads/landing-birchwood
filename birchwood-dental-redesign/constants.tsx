@@ -84,7 +84,7 @@ export const PROCESS_STEPS: ProcessStep[] = [
 
 export const PRICING_TIERS: PricingTier[] = [
   {
-    name: "Consultation",
+    name: "Enquiry",
     price: "Free",
     features: [
       "Initial assessment",

@@ -42,7 +42,7 @@ const Services: React.FC = () => {
                   href="#contact"
                   className="inline-flex items-center justify-center w-full px-4 py-3 bg-white border border-brand-200 text-brand-700 font-semibold rounded-xl hover:bg-brand-600 hover:text-white hover:border-brand-600 transition-all duration-300 group/btn shadow-sm"
                 >
-                  Book Your Free Consultation
+                  Book Your Free Enquiry
                   <ArrowRight size={18} className="ml-2 group-hover/btn:translate-x-1 transition-transform" />
                 </a>
               </div>

@@ -46,7 +46,7 @@ const Pricing: React.FC = () => {
                   : 'bg-slate-100 hover:bg-slate-200 text-slate-900'
                   }`}
               >
-                Book Your Free Consultation
+                Book Your Free Enquiry
               </a>
             </div>
           ))}

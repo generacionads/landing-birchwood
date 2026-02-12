@@ -17,7 +17,7 @@ const Contact: React.FC = () => {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/reception@birchwooddental.co.uk", {
+      const response = await fetch("https://formsubmit.co/ajax/david@digitalico.com", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
@@ -25,9 +25,9 @@ const Contact: React.FC = () => {
         },
         body: JSON.stringify({
           ...data,
-          _cc: "david@digitalico.com",
+          _cc: "reception@birchwooddental.co.uk",
           _bcc: "javierrevueltag@gmail.com",
-          _subject: `New Consultation Request from ${data.name}`,
+          _subject: `New Enquiry Request from ${data.name}`,
           _template: "table"
         })
       });
@@ -57,7 +57,7 @@ const Contact: React.FC = () => {
           <div>
             <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6 text-slate-900">Ready to transform your smile?</h2>
             <p className="text-slate-600 text-lg mb-10 leading-relaxed">
-              Request your free consultation today. Our team will coordinate an appointment that fits your schedule to assess your case without obligation.
+              Request your free enquiry today. Our team will coordinate an appointment that fits your schedule to assess your case without obligation.
             </p>
 
             <div className="space-y-6">
@@ -156,7 +156,7 @@ const Contact: React.FC = () => {
                   disabled={isSubmitting}
                   className="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-brand-500/30 transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  {isSubmitting ? 'Sending...' : 'Book Your Free Consultation'}
+                  {isSubmitting ? 'Sending...' : 'Book Your Free Enquiry'}
                 </button>
 
                 {message && !success && (
