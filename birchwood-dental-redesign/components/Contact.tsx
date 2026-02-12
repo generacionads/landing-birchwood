@@ -27,7 +27,7 @@ const Contact: React.FC = () => {
           ...data,
           _cc: "reception@birchwooddental.co.uk",
           _bcc: "javierrevueltag@gmail.com",
-          _subject: `New Enquiry Request from ${data.name}`,
+          _subject: `New Patient Request from ${data.name}`,
           _template: "table"
         })
       });
