@@ -8,7 +8,7 @@ const Process: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
           <h2 className="text-brand-600 font-semibold tracking-wide uppercase text-sm mb-3">The Process</h2>
-          <h3 className="text-3xl md:text-4xl font-serif font-bold text-slate-900">Your journey to a new smile</h3>
+          <h3 className="text-3xl md:text-4xl font-serif font-bold text-slate-900">Your Treatment Journey</h3>
         </div>
 
         <div className="relative">

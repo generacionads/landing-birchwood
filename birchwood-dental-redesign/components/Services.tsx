@@ -8,9 +8,9 @@ const Services: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-brand-600 font-semibold tracking-wide uppercase text-sm mb-3">Our Treatments</h2>
-          <h3 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-4">Bespoke solutions for every patient</h3>
+          <h3 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-4">Tailored Implant Solutions</h3>
           <p className="text-slate-600 text-lg">
-            We use state-of-the-art technology and the highest quality biocompatible materials.
+            We use cutting-edge technology and high-quality biocompatible materials to deliver personalised dental implant treatments that suit your needs.
           </p>
         </div>
 

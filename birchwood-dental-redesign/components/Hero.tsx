@@ -16,18 +16,18 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20">
-        <div className="max-w-3xl">
+        <div className="max-w-4xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/20 border border-brand-400/30 text-brand-100 text-sm font-medium mb-6 backdrop-blur-sm">
             <CheckCircle2 size={16} className="text-brand-400" />
             <span>Leading Dental Implant Clinic Walsall</span>
           </div>
 
           <h1 className="text-4xl md:text-6xl font-serif font-bold text-white leading-tight mb-6">
-            Restore your confidence with expert <span className="text-brand-400">dental implants</span>
+            Restore your confidence with expert <span className="text-brand-400">dental implant care</span>
           </h1>
 
           <p className="text-lg md:text-xl text-slate-200 mb-8 leading-relaxed max-w-lg">
-            Durable and aesthetic dental implant solutions. Eat, laugh, and speak with total security again.
+            Durable, natural-looking implant solutions that let you eat, laugh and speak with confidence.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">

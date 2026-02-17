@@ -9,11 +9,11 @@ const Pricing: React.FC = () => {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-4">Transparent Pricing</h2>
           <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-            No hidden costs.
+            We offer clear pricing with no hidden fees.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {PRICING_TIERS.map((tier, index) => (
             <div
               key={index}

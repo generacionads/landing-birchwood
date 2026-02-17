@@ -57,7 +57,7 @@ const Contact: React.FC = () => {
           <div>
             <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6 text-slate-900">Ready to transform your smile?</h2>
             <p className="text-slate-600 text-lg mb-10 leading-relaxed">
-              Request your free enquiry today. Our team will coordinate an appointment that fits your schedule to assess your case without obligation.
+              Request your free enquiry today. Our team will book your initial assessment at a time that suits you—no obligation.
             </p>
 
             <div className="space-y-6">
@@ -67,7 +67,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-lg text-slate-900">Call Us</h4>
-                  <p className="text-slate-600">01922 413275</p>
+                  <a href="tel:01922413275" className="text-slate-600 hover:text-brand-600 transition-colors">01922 413275</a>
                   <p className="text-slate-500 text-sm">Mon-Fri: 9am - 6pm</p>
                 </div>
               </div>
@@ -78,7 +78,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-lg text-slate-900">Email</h4>
-                  <p className="text-slate-600">reception@birchwooddental.co.uk</p>
+                  <a href="mailto:reception@birchwooddental.co.uk" className="text-slate-600 hover:text-brand-600 transition-colors">reception@birchwooddental.co.uk</a>
                 </div>
               </div>
 
@@ -88,7 +88,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-lg text-slate-900">Visit Us</h4>
-                  <p className="text-slate-600">171 Walsall Road, Great Wyrley<br />Walsall, West Midlands, WS6 6NL</p>
+                  <a href="https://www.google.com/maps/search/?api=1&query=171+Walsall+Road,+Great+Wyrley,+Walsall,+West+Midlands,+WS6+6NL" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-brand-600 transition-colors">171 Walsall Road, Great Wyrley<br />Walsall, West Midlands, WS6 6NL</a>
                 </div>
               </div>
             </div>
